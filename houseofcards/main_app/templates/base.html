@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>House of Cards</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
   <header class="navbar-fixed">
@@ -17,6 +19,7 @@
         <!-- NAV LINKKS -->
         <ul class="right">
           <li><a href="/games">All Games</a></li>
+          <li><a href="/favorites">Favorites</a></li>
         </ul>
       </div>
     </nav>

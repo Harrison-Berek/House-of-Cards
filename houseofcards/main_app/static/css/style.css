@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-image: url("https://i.imgur.com/I6eT8bo.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer.page-footer {
+  padding-top: 0;
+  text-align: right;
+  background-color: white;
+  color: blue;
+}
+
+nav{
+    background-color: rgb(255, 255, 255);
+
+}
+
+nav a {
+    color: blue!important;
+}
+  
