@@ -11,9 +11,14 @@ games = [
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+  return render(request, 'home.html')
 
 def games_index(request):
-    return render(request, 'games/index.html', {
-        'games': games 
+  return render(request, 'games/index.html', {
+    'games': games 
     })
+
+# def favorites_index(request):
+#   return render(request, 'favorites/index.html', {
+    
+#   } )
