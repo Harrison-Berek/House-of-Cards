@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{game.name}} Details</h1>
+
+<div class="card">
+    <div class="card-content">
+        <p>Rules: {{game.rules}}</p>
+        <p>Number of Players: {{game.num_players}}</p>
+        <p>Cards Used: {{game.cards_used}}</p>
+        <p>Region: {{game.region}}</p>
+        <p>Created On: {{game.created}}</p>
+    </div>
+</div>
+
+{% endblock %}
