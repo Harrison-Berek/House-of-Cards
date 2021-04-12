@@ -13,6 +13,12 @@ def games_index(request):
     'games': games 
     })
 
+def games_details(request, game_id):
+  game = Game.objects.get(id=game_id)   
+  return render(request, 'games/details.html', {
+    'game' : game
+  })
+
 class GamesCreate(CreateView):
   model = Game
   fields = '__all__'
