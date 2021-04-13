@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Game
+from .forms import CommentForm
 # from django.http import HttpResponse
 
 # Create your views here.
@@ -14,10 +15,20 @@ def games_index(request):
     })
 
 def games_details(request, game_id):
-  game = Game.objects.get(id=game_id)   
+  game = Game.objects.get(id=game_id)
+  comment_form = CommentForm()   
   return render(request, 'games/details.html', {
-    'game' : game
+    'game' : game,
+    'comment_form': comment_form
   })
+
+def comments_create(request, game_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.game_id = game_id
+    new_comment.save()
+  return redirect('details', game_id=game_id)
 
 class GamesCreate(CreateView):
   model = Game

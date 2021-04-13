@@ -30,3 +30,7 @@ nav a {
 select {
   display: block;
 }
+
+label {
+  visibility: hidden;
+}
