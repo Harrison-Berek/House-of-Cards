@@ -23,6 +23,15 @@ class GamesCreate(CreateView):
   model = Game
   fields = '__all__'
 
+class GamesUpdate(UpdateView):
+  model = Game
+  fields = ['rules', 'num_players', 'cards_used', 'region']
+
+class GamesDelete(DeleteView):
+  model = Game
+  success_url = '/games/'
+
+
 
 # def favorites_index(request):
 #   return render(request, 'favorites/index.html', {
