@@ -16,6 +16,35 @@
         <a href="{% url 'games_update' game.id %}">Edit</a>
         <a href="{% url 'games_delete' game.id %}">Delete</a>
     </div>
+    <div class="card-content">
+        <form action="{% url 'comments_create' game.id %}" method="POST">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <label for=""></label>
+            <input type="submit" class="btn" value="Share Your Thoughts!">
+        </form>
+    </div>
+    <div class="card-content">
+        {% if game.comment_set.all %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Comments:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for comment in game.comment_set.all %}
+                    <tr>
+                        <td>{{ comment.content }}</td>
+                        <td>{{ comment.created }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h5>Say Something!</h5>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

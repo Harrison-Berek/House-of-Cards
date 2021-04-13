@@ -9,5 +9,6 @@ urlpatterns = [
     path('games/create/', views.GamesCreate.as_view(), name='games_create'),
     path('games/<int:pk>/update/', views.GamesUpdate.as_view(), name='games_update'),
     path('games/<int:pk>/delete/', views.GamesDelete.as_view(), name='games_delete'),
+    path('games/<int:game_id>/comments/', views.comments_create, name='comments_create')
     # path('favorites/', views.favorites_index, name='favorites')
 ]
