@@ -30,6 +30,9 @@ def comments_create(request, game_id):
     new_comment.save()
   return redirect('details', game_id=game_id)
 
+# def comments_update(request, comment_id):
+#   comment = Comment.objects.get(id=comment_id)
+
 class GamesCreate(CreateView):
   model = Game
   fields = '__all__'
@@ -44,7 +47,3 @@ class GamesDelete(DeleteView):
 
 
 
-# def favorites_index(request):
-#   return render(request, 'favorites/index.html', {
-    
-#   } )

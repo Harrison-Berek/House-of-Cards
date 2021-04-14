@@ -10,5 +10,6 @@ urlpatterns = [
     path('games/<int:pk>/update/', views.GamesUpdate.as_view(), name='games_update'),
     path('games/<int:pk>/delete/', views.GamesDelete.as_view(), name='games_delete'),
     path('games/<int:game_id>/comments/', views.comments_create, name='comments_create')
-    # path('favorites/', views.favorites_index, name='favorites')
+    path('comments/<int:pk>/update/', views.CommentsUpdate.as_view(), name='comments_update')
+    # path('games/<int:game_id>/comments/', views.comments_create, name='comments_create')
 ]
