@@ -31,6 +31,10 @@ select {
   display: block;
 }
 
-label {
+/* label {
   visibility: hidden;
-}
+} */
+
+label[for=id_content] {
+  color: white;
+} 
