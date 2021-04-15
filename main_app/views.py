@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Game
+from .models import Game, Comment
 from .forms import CommentForm
-# from django.http import HttpResponse
+
 
 # Create your views here.
 def home(request):
@@ -30,6 +30,11 @@ def comments_create(request, game_id):
     new_comment.save()
   return redirect('details', game_id=game_id)
 
+# def comments_update(request, comment_id):
+#   comment = Comment.objects.get(id=comment_id)
+
+  
+
 class GamesCreate(CreateView):
   model = Game
   fields = '__all__'
@@ -42,9 +47,9 @@ class GamesDelete(DeleteView):
   model = Game
   success_url = '/games/'
 
+class CommentsDelete(DeleteView):
+  model = Comment
+  success_url = '/games/'
 
 
-# def favorites_index(request):
-#   return render(request, 'favorites/index.html', {
-    
-#   } )
+
