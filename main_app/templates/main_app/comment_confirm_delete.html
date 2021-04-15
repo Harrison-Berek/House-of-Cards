@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-title">
+        <h1>Delete Comment</h1>
+    </div>
+    <div class="card-content">
+        <h4>Are you sure you want to delete your comment?</h4>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Yes - Delete!" class="btn">
+            <a href="{% url 'details' comment.game_id %}">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %} 
