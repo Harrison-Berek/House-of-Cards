@@ -12,4 +12,5 @@ urlpatterns = [
     path('games/<int:game_id>/comments/', views.comments_create, name='comments_create'),
     # path('comments/<int:pk>/update/', views.CommentsUpdate.as_view(), name='comments_update'),
     path('comments/<int:pk>/delete/', views.CommentsDelete.as_view(), name='comments_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
