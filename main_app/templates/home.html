@@ -2,6 +2,18 @@
 
 {% block content %}
 
-<h1>DAS HOME PAGE</h1>
+<h1>Welcome to the House of Cards! </h1>
+
+<div class="card">
+    <div class="card-title">
+        <h3 class="center-align">Click below to Log In or Sign Up</h3>
+    </div>
+    <div class="card-action">
+        <a href="{% url 'login' %}">Log In</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+
+    </div>
+
+</div>
 
 {% endblock %}

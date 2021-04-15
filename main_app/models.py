@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
  
 num_player_choices = (
   ("1", "1"),
@@ -22,6 +23,7 @@ class Game(models.Model):
     )
   created = models.DateField(auto_now_add=True)
   updated = models.DateField(auto_now=True)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.name
