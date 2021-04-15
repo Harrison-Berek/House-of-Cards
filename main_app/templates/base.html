@@ -20,6 +20,7 @@
         <ul class="right">
           <li><a href="{% url 'index' %}">All Games</a></li>
           {% if user.is_authenticated %}
+            <li><a href="{% url 'my_games' %}">My Games</a></li>
             <li><a href="{% url 'games_create' %}">Add Game</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
