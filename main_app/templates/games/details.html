@@ -11,6 +11,7 @@
         <p>Cards Used: {{game.cards_used}}</p>
         <p>Region: {{game.region}}</p>
         <p>Created On: {{game.created}}</p>
+
     </div>
     <div class="card-action">
         <a href="{% url 'games_update' game.id %}">Edit</a>
@@ -44,6 +45,30 @@
             </table>
         {% else %}
             <h5>Say Something!</h5>
+        {% endif %}
+    </div>
+</div>
+<div class="card">
+    <div class="card-content">
+        <h5>Add a Badge!</h5>
+        <div class="card-action">
+            <form action="{% url 'assoc_badge' game.id %}" method="POST">
+                {% csrf_token %}
+                <select name="badge" class="select">
+                    {% for badge in badges %}
+                        <option value="{{ badge.id }}">{{ badge.title }}</option>
+                {% endfor %}
+                </select>
+                <button type="submit" class="btn">Add</button>
+            </form>
+        </div>
+    </div>
+    <div class="card-content">
+        {% if game.badges %}
+            {% for badge in game.badges.all %}
+                <p>{{ badge.title }}</p>
+                <img class="circle responsive-img badge" src="{{ badge.url }}" alt="badge icon">
+            {% endfor %}
         {% endif %}
     </div>
 </div>
