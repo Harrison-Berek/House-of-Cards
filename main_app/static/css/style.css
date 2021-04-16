@@ -31,10 +31,11 @@ select {
   display: block;
 }
 
-/* label {
-  visibility: hidden;
-} */
-
 label[for=id_content] {
   color: white;
 } 
+
+.badge {
+  width: 30px;
+  height: auto;
+}

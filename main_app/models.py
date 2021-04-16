@@ -10,7 +10,16 @@ num_player_choices = (
   ("5", "5+"),
 )
 
-# Create your models here.
+class Badge(models.Model):
+  title = models.CharField(max_length=50)
+  url = models.CharField(max_length=200)
+
+  def __str__(self):
+    return self.title
+
+  def get_absolute_url(self):
+    return reverse('detail', kwargs={'game_id': self.game_id})
+
 class Game(models.Model):
   name = models.CharField(max_length=100)
   cards_used = models.CharField(max_length=100)
@@ -24,6 +33,8 @@ class Game(models.Model):
   created = models.DateField(auto_now_add=True)
   updated = models.DateField(auto_now=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
+  badges = models.ManyToManyField(Badge)
+
 
   def __str__(self):
     return self.name
@@ -41,3 +52,6 @@ class Comment(models.Model):
 
   class Meta:
     ordering = ['-id']
+
+
+  

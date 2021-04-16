@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Game, Comment
+from .models import Game, Comment, Badge
 from .forms import CommentForm
 
 
@@ -24,15 +24,17 @@ def games_my_games(request):
   games = Game.objects.filter(user=request.user)
   return render(request, 'games/index.html', { 
     'games': games
-   })
+  })
 
 @login_required
 def games_details(request, game_id):
   game = Game.objects.get(id=game_id)
-  comment_form = CommentForm()   
+  comment_form = CommentForm()
+  badges = Badge.objects.all()
   return render(request, 'games/details.html', {
     'game' : game,
-    'comment_form': comment_form
+    'comment_form': comment_form,
+    'badges' : badges,
   })
 
 def comments_create(request, game_id):
@@ -41,6 +43,11 @@ def comments_create(request, game_id):
     new_comment = form.save(commit=False)
     new_comment.game_id = game_id
     new_comment.save()
+  return redirect('details', game_id=game_id)
+
+def assoc_badge(request, game_id):
+  Game.objects.get(id=game_id).badges.add(request.POST.get('badge'))
+  print('LOOK HERE: ', request.POST.get(id))
   return redirect('details', game_id=game_id)
 
 def signup(request):
