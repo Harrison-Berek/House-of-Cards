@@ -2,17 +2,24 @@
 
 {% block content %}
 
-<h1>Games</h1>
+<h1 class="white-text">Games</h1>
 
+<container class="wrapper-grid">
 {% for game in games %}
   <div class="card">
     <a href="{% url "details" game.id %}">
-      <div class="card-content">
-          <span class="card-title">{{game.name}}</span>
+      <div class="card-image">
+        <img class="gamecard" src="https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-vintage-minimalistic-playing-card-background-image_88093.jpg" alt="">
+        <div class="card-title linktext custom-align">
+          <p class="center-align">{{game.name}} ||  Players: {{game.num_players}}</p>
+          {% for badge in game.badges.all %}
+          <img class="badge" src="{{badge.url}}" alt="{{badge.name}}">
+          {% endfor %}
+        </div>
       </div>
     </a>  
   </div>  
 {% endfor %}
-
+</container>
 {% endblock %}
 
