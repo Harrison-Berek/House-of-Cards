@@ -27,12 +27,14 @@
         <p>Created On: {{game.created}}</p>
 
     </div>
+    {% if user_id == game.user %}
     <div class="card-action">
         <a href="{% url 'games_update' game.id %}">Edit</a>
         <a href="{% url 'games_delete' game.id %}">Delete</a>
     </div>
+    {% endif %}
     <div class="card-content">
-        <form action="{% url 'comments_create' game.id %}" method="POST">
+        <form action="{% url 'comments_create' game.id user.id %}" method="POST">
             {% csrf_token %}
             {{ comment_form.as_p }}
             <label for=""></label>
@@ -52,7 +54,9 @@
                     <tr>
                         <td>{{ comment.content }}</td>
                         <td>{{ comment.created }}</td>
+                        {% if user_id == comment.user %}
                         <td><a href="{% url 'comments_delete' game.id comment.id %}">Delete</a></td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>

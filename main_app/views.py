@@ -26,7 +26,6 @@ def games_my_games(request):
     'games': games
   })
 
-@login_required
 def games_details(request, game_id):
   game = Game.objects.get(id=game_id)
   comment_form = CommentForm()
@@ -39,11 +38,14 @@ def games_details(request, game_id):
     'user_id': user_id,
   })
 
-def comments_create(request, game_id):
+@login_required
+def comments_create(request, game_id, user_id):
   form = CommentForm(request.POST)
+  print(f'LOOK HERE: {request.POST}')
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.game_id = game_id
+    new_comment.user_id = user_id
     new_comment.save()
   return redirect('details', game_id=game_id)
 
@@ -52,6 +54,7 @@ def assoc_badge(request, game_id):
   Game.objects.get(id=game_id).badges.add(request.POST.get('badge'))
   return redirect('details', game_id=game_id)
 
+@login_required
 def unassoc_badge(request, game_id, badge_id):
   Game.objects.get(id=game_id).badges.remove(badge_id)
   user_id = request.user
@@ -72,6 +75,7 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+@login_required
 def comments_delete(request, game_id, comment_id):
   comment = Comment.objects.get(id=comment_id)
   comment.delete()
