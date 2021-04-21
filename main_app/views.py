@@ -41,7 +41,6 @@ def games_details(request, game_id):
 @login_required
 def comments_create(request, game_id, user_id):
   form = CommentForm(request.POST)
-  print(f'LOOK HERE: {request.POST}')
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.game_id = game_id
