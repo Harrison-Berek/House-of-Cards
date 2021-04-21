@@ -46,6 +46,7 @@ class Comment(models.Model):
   content = models.TextField(max_length=500)
   created = models.DateField(auto_now_add=True)
   game = models.ForeignKey(Game, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.content

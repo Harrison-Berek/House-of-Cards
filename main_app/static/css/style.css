@@ -39,3 +39,15 @@ label[for=id_content] {
   width: 30px;
   height: auto;
 }
+
+#logo {
+  width: 23%;
+  height: auto;
+  margin-left: 2vmin;
+}
+
+#details-title {
+  font-size: 8vmin;
+  color: white;
+  text-shadow: rgb(0, 0, 0) 0px 0px 20px;
+}

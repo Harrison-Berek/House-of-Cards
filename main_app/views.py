@@ -26,29 +26,39 @@ def games_my_games(request):
     'games': games
   })
 
-@login_required
 def games_details(request, game_id):
   game = Game.objects.get(id=game_id)
   comment_form = CommentForm()
   badges = Badge.objects.all()
+  user_id = request.user
   return render(request, 'games/details.html', {
     'game' : game,
     'comment_form': comment_form,
     'badges' : badges,
+    'user_id': user_id,
   })
 
-def comments_create(request, game_id):
+@login_required
+def comments_create(request, game_id, user_id):
   form = CommentForm(request.POST)
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.game_id = game_id
+    new_comment.user_id = user_id
     new_comment.save()
   return redirect('details', game_id=game_id)
 
+@login_required
 def assoc_badge(request, game_id):
   Game.objects.get(id=game_id).badges.add(request.POST.get('badge'))
-  print('LOOK HERE: ', request.POST.get(id))
   return redirect('details', game_id=game_id)
+
+@login_required
+def unassoc_badge(request, game_id, badge_id):
+  Game.objects.get(id=game_id).badges.remove(badge_id)
+  user_id = request.user
+  return redirect('details', game_id=game_id)
+
 
 def signup(request):
   error_message = ''
@@ -64,9 +74,11 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-# def comments_update(request, comment_id):
-#   comment = Comment.objects.get(id=comment_id)
-
+@login_required
+def comments_delete(request, game_id, comment_id):
+  comment = Comment.objects.get(id=comment_id)
+  comment.delete()
+  return redirect('details', game_id=game_id)
   
 
 class GamesCreate(CreateView, LoginRequiredMixin):
@@ -84,9 +96,7 @@ class GamesDelete(DeleteView, LoginRequiredMixin):
   model = Game
   success_url = '/games/'
 
-class CommentsDelete(DeleteView, LoginRequiredMixin):
-  model = Comment
-  success_url = '/games/'
+
 
 
 
