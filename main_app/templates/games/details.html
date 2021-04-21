@@ -6,6 +6,20 @@
 <div class="row">
 <div class="card">
     <div class="card-content">
+        <div class="card-content">
+            {% if game.badges %}
+                {% for badge in game.badges.all %}
+                    <p>{{ badge.title }}</p>
+                    <img class="circle responsive-img badge" src="{{ badge.url }}" alt="badge icon">
+                    {% if user_id == game.user %}
+                    <form action="{% url 'unassoc_badge' game.id badge.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Remove</button>
+                    </form>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
         <p>Rules: {{game.rules}}</p>
         <p>Number of Players: {{game.num_players}}</p>
         <p>Cards Used: {{game.cards_used}}</p>
@@ -38,7 +52,7 @@
                     <tr>
                         <td>{{ comment.content }}</td>
                         <td>{{ comment.created }}</td>
-                        <td><a href="{% url 'comments_delete' comment.id %}">Delete</a></td>
+                        <td><a href="{% url 'comments_delete' game.id comment.id %}">Delete</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -49,6 +63,7 @@
     </div>
 </div>
 <div class="card">
+    {% if user_id == game.user %}
     <div class="card-content">
         <h5>Add a Badge!</h5>
         <div class="card-action">
@@ -62,15 +77,9 @@
                 <button type="submit" class="btn">Add</button>
             </form>
         </div>
+        {% endif %} 
     </div>
-    <div class="card-content">
-        {% if game.badges %}
-            {% for badge in game.badges.all %}
-                <p>{{ badge.title }}</p>
-                <img class="circle responsive-img badge" src="{{ badge.url }}" alt="badge icon">
-            {% endfor %}
-        {% endif %}
-    </div>
+
 </div>
 </div>
 {% endblock %}
