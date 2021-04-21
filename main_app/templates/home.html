@@ -4,16 +4,16 @@
 
 <h1 class="white-text center center-align">Welcome to the House of Cards! </h1>
 
-<div class="card">
-    <div class="card-title">
-        <h3 class="center-align">Click below to Log In or Sign Up</h3>
+<div class="logincard valign-wrapper">
+    <div class="card">
+        <div class="card-image large">
+            <img src="https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-vintage-minimalistic-playing-card-background-image_88093.jpg" alt="">
+            <div class="center-align card-title">
+                <p class="black-text">Create, share, and browse through the House of Cards to discover new games or add your own! Label them with badges and add comments to your favorites!</p>
+                <a  class="linktext" href="{% url 'login' %}">Log In |</a>
+                <a class="linktext" href="{% url 'signup' %}">| Sign Up</a>
+            </div>
+        </div>
     </div>
-    <div class="card-action">
-        <a href="{% url 'login' %}">Log In</a>
-        <a href="{% url 'signup' %}">Sign Up</a>
-
-    </div>
-
 </div>
-
 {% endblock %}

@@ -51,3 +51,18 @@ label[for=id_content] {
   color: white;
   text-shadow: rgb(0, 0, 0) 0px 0px 20px;
 }
+
+.linktext {
+  color: blue!important;
+}
+
+.logincard {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 10rem;
+}
+
+.card-title {
+  padding: 10rem;
+}
