@@ -36,7 +36,7 @@ label[for=id_content] {
 } 
 
 .badge {
-  width: 30px;
+  width: 30px!important;
   height: auto;
 }
 
@@ -63,6 +63,19 @@ label[for=id_content] {
   margin-top: 10rem;
 }
 
-.card-title {
-  padding: 10rem;
+.wrapper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  column-gap: 20px;
 }
+
+.gamecard {
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+  grid-template-columns: 1fr;
+}
+
+/* .custom-align {
+  grid-row: 1 / span 3;
+} */
