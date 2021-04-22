@@ -6,15 +6,16 @@
 
 <container class="wrapper-grid">
 {% for game in games %}
-  <div class="card">
-    <a href="{% url "details" game.id %}">
-      <div class="card-image">
-        <img class="gamecard" src="https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-vintage-minimalistic-playing-card-background-image_88093.jpg" alt="">
-        <div class="card-title linktext custom-align">
-          <p class="center-align">{{game.name}} ||  Players: {{game.num_players}}</p>
+<a href="{% url 'details' game.id %}"> 
+      <div class="card gamecard">
+        <div class="card-content center-align index-badges">
           {% for badge in game.badges.all %}
           <img class="badge" src="{{badge.url}}" alt="{{badge.name}}">
           {% endfor %}
+        </div>
+        <div class="linktext card-content">
+          <h3 class="center-align index-title">{{game.name}}</h3>
+          <h4 class="center-align index-title">Players: {{game.num_players}}</h4>
         </div>
       </div>
     </a>  

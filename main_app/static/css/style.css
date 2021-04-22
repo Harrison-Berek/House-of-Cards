@@ -36,7 +36,7 @@ label[for=id_content] {
 } 
 
 .badge {
-  width: 30px!important;
+  width: 40px!important;
   height: auto;
 }
 
@@ -65,17 +65,22 @@ label[for=id_content] {
 
 .wrapper-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-content: center;
-  column-gap: 20px;
+  /* column-gap: 20px; */
 }
 
 .gamecard {
-  display: grid;
-  grid-template-rows: 1fr 6fr;
-  grid-template-columns: 1fr;
+  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-vintage-minimalistic-playing-card-background-image_88093.jpg');
+  width: 378px;
+  height: 505px;
+  background-size: cover;
+  background-position: center;
+  margin: 2vmin;
+  padding-top: 5vmin;
 }
 
-/* .custom-align {
-  grid-row: 1 / span 3;
-} */
+.index-title {
+  margin-left: 7vmin;
+  margin-right: 7vmin;
+}

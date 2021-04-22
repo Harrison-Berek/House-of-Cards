@@ -7,8 +7,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Game, Comment, Badge
 from .forms import CommentForm
 
-
-
 # Create your views here.
 def home(request):
   return render(request, 'home.html')
@@ -39,12 +37,12 @@ def games_details(request, game_id):
   })
 
 @login_required
-def comments_create(request, game_id, user_id):
+def comments_create(request, game_id):
   form = CommentForm(request.POST)
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.game_id = game_id
-    new_comment.user_id = user_id
+    new_comment.user_id = request.user.id
     new_comment.save()
   return redirect('details', game_id=game_id)
 
@@ -58,7 +56,6 @@ def unassoc_badge(request, game_id, badge_id):
   Game.objects.get(id=game_id).badges.remove(badge_id)
   user_id = request.user
   return redirect('details', game_id=game_id)
-
 
 def signup(request):
   error_message = ''
@@ -80,7 +77,6 @@ def comments_delete(request, game_id, comment_id):
   comment.delete()
   return redirect('details', game_id=game_id)
   
-
 class GamesCreate(CreateView, LoginRequiredMixin):
   model = Game
   fields = ['name','rules', 'num_players', 'cards_used', 'region']
@@ -95,8 +91,3 @@ class GamesUpdate(UpdateView, LoginRequiredMixin):
 class GamesDelete(DeleteView, LoginRequiredMixin):
   model = Game
   success_url = '/games/'
-
-
-
-
-
