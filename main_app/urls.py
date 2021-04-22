@@ -11,7 +11,6 @@ urlpatterns = [
     path('games/<int:pk>/update/', views.GamesUpdate.as_view(), name='games_update'),
     path('games/<int:pk>/delete/', views.GamesDelete.as_view(), name='games_delete'),
     path('games/<int:game_id>/comments/', views.comments_create, name='comments_create'),
-    # path('comments/<int:pk>/delete/', views.CommentsDelete.as_view(), name='comments_delete'),
     path('games/<int:game_id>/comments/<int:comment_id>/', views.comments_delete, name='comments_delete'),
     path('games/<int:game_id>/assoc_badge/', views.assoc_badge, name='assoc_badge'),
     path('games/<int:game_id>/unassoc_badge/<int:badge_id>/', views.unassoc_badge, name='unassoc_badge'),
