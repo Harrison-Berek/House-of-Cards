@@ -88,10 +88,14 @@ label[for=id_content] {
   height: 40vmin;
   overflow: scroll;
   border: 1px solid black;
+  padding: 2vmin;
 }
 
 .badge-title {
-  display: inline;
+  width: 40px;
+  /* float: right; */
+  font-size: 14px;
+  margin: 0 1px;
 }
 
 .remove-icon {
@@ -105,4 +109,31 @@ label[for=id_content] {
   color: white!important;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  padding-top: 0;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px;
+  /* Position the tooltip */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 
+.badge-container {
+  padding-top: 1vmin!important;
+  padding-left: 1vmin!important;
+}

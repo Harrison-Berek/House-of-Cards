@@ -6,16 +6,20 @@
     <div class="card details-card">
         <div class="card-content">
             <span class="card-title">
-                <h3>{{game.name}} Details</h3>
-                <div class="card-content">
+                <h3 style="margin-bottom: 0;">{{game.name}} Details</h3>
+                <div class="card-content badge-container">
                     {% if game.badges %}
                         {% for badge in game.badges.all %}
-                            <p class="badge-title">{{ badge.title }}</p>
+                        <div class="tooltip">
+                            <div class="tooltiptext">
+                                <p class="badge-title">{{ badge.title }}</p>
+                            </div>
                             {% if user_id == game.user %}
                             <form class="badge-title" action="{% url 'unassoc_badge' game.id badge.id %}" method="POST">
                                 {% csrf_token %}
                                 <button style="background: url({{badge.url}}); background-size: cover; background-position: center;" type="submit" class="btn remove-icon">X</button>
                             </form>
+                        </div>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
