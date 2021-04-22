@@ -36,7 +36,7 @@
     </div>
     {% endif %}
     <div class="card-content">
-        <form action="{% url 'comments_create' game.id user.id %}" method="POST">
+        <form action="{% url 'comments_create' game.id %}" method="POST">
             {% csrf_token %}
             {{ comment_form.as_p }}
             <label for=""></label>
