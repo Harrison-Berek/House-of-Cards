@@ -5,43 +5,48 @@
 <div class="row">
     <div class="card details-card">
         <div class="card-content">
-            <span class="card-title">
-                <h3>{{game.name}} Details</h3>
-                <div class="card-content">
+            <div class="card-title">
+                <h3 class="details-title">{{game.name}} Details</h3>
+                <div class="card-content badge-container">
                     {% if game.badges %}
                         {% for badge in game.badges.all %}
-                            <p class="badge-title">{{ badge.title }}</p>
+                        <div class="tooltip">
+                            <div class="tooltiptext">
+                                <p class="badge-title">{{ badge.title }}</p>
+                            </div>
                             {% if user_id == game.user %}
                             <form class="badge-title" action="{% url 'unassoc_badge' game.id badge.id %}" method="POST">
                                 {% csrf_token %}
-                                <button style="background: url({{badge.url}}); background-size: cover; background-position: center;" type="submit" class="btn remove-icon">X</button>
+                                <button style="background: url({{badge.url}});" type="submit" class="btn remove-icon">X</button>
                             </form>
+                        </div>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>
-            </span>
+            </div>
         <div class="details-section">
-            <h6>Number of Players: {{game.num_players}}</h6>
-            <h6>Cards Used: {{game.cards_used}}</h6>
-            <h6>Region: {{game.region}}</h6>
-            <h6>Created On: {{game.created}}</h6>
-            <h6>Rules:</h6>
+            <h6><strong>Number of Players:</strong> {{game.num_players}}</h6>
+            <h6><strong>Cards Used:</strong> {{game.cards_used}}</h6>
+            <h6><strong>Region:</strong> {{game.region}}</h6>
+            <h6><strong>Created On:</strong> {{game.created}}</h6>
+            <h6><strong>Rules:</strong></h6>
         </div>
         <p class="rules">{{game.rules}}</p>
     </div>
     {% if user_id == game.user %}
     <div class="card-action">
-        <a href="{% url 'games_update' game.id %}">Edit</a>
-        <a href="{% url 'games_delete' game.id %}">Delete</a>
+        <a class="btn" href="{% url 'games_update' game.id %}">Edit</a>
+        <a class="btn" href="{% url 'games_delete' game.id %}">Delete</a>
     </div>
     {% endif %}
     <div class="card-content">
         <form action="{% url 'comments_create' game.id %}" method="POST">
             {% csrf_token %}
             {{ comment_form.as_p }}
-            <label for=""></label>
+            <div class="card-action">
             <input type="submit" class="btn" value="Share Your Thoughts!">
+            </div>
         </form>
     </div>
     <div class="card-content">
@@ -50,6 +55,8 @@
                 <thead>
                     <tr>
                         <th>Comments:</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,9 +64,9 @@
                     <tr>
                         <td>{{ comment.content }}</td>
                         <td>{{ comment.created }}</td>
-                        {% if user_id == comment.user %}
-                        <td><a href="{% url 'comments_delete' game.id comment.id %}">Delete</a></td>
-                        {% endif %}
+                        <td>{% if user_id == comment.user %}
+                        <a class="btn" href="{% url 'comments_delete' game.id comment.id %}">Delete</a>
+                        {% endif %}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -81,7 +88,9 @@
                         <option value="{{ badge.id }}">{{ badge.title }}</option>
                 {% endfor %}
                 </select>
-                <button type="submit" class="btn">Add</button>
+                <div class="card-action">
+                    <button type="submit" class="btn">Add</button>
+                </div>
             </form>
         </div>
         {% endif %} 
