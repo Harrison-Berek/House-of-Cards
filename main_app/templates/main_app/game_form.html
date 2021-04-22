@@ -2,13 +2,18 @@
 
 {% block content %}
 <div class="card">
+    <div class="card-title">
+        <h3 class="form-title center-align">Add a Game</h3>
+    </div>
     <div class="card-content">
         <form action="" method="post">
             {% csrf_token %}
             <table>
             {{ form.as_table }}
             </table>
-            <input type="submit" value="Submit!" class="btn">
+            <div class="card-action">
+                <input type="submit" value="Submit!" class="btn">
+            </div>
         </form>
     </div>
 </div>
