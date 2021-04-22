@@ -6,18 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>House of Cards</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <header class="navbar-fixed">
-    <nav>
+  <nav>
       <div class="nav-wrapper">
         <ul>
           <li><a href="/" class="left brand-logo"><img id="logo" src="https://cdn2.iconfinder.com/data/icons/sports-and-games-24/68/Poker-256.png" alt="home"></a></li>
         </ul>
         <!-- NAV LINKKS -->
-        <ul class="right">
+        <a href="#" data-target="mobile-links" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
           <li><a href="{% url 'index' %}">All Games</a></li>
           {% if user.is_authenticated %}
             <li><a href="{% url 'my_games' %}">My Games</a></li>
@@ -28,8 +29,17 @@
         {% endif %}
         </ul>
       </div>
-    </nav>
-  </header>
+  </nav>
+    <ul class="sidenav" id="mobile-links">
+      <li><a href="{% url 'index' %}">All Games</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'my_games' %}">My Games</a></li>
+        <li><a href="{% url 'games_create' %}">Add Game</a></li>
+        <li><a href="{% url 'logout' %}">Log Out</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">Log In</a></li>
+    {% endif %}
+    </ul>
   <main class="container">
     {% block content %}
     {% endblock %}
@@ -37,5 +47,16 @@
   <footer class="page-footer">
     <div class="right">All Rights Reserved, &copy; 2021 House of Cards &nbsp;</div>
   </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+    $('.sidenav').sidenav({
+      menuWidth: 300,
+      closeOnClick: true,
+      edge: 'right',
+    });
+  });
+  </script>
 </body>
 </html>

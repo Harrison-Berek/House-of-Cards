@@ -9,6 +9,7 @@ body {
 
 main {
   flex: 1 0 auto;
+  margin-top: 10vmin!important;
 }
 
 footer.page-footer {
@@ -19,8 +20,11 @@ footer.page-footer {
 }
 
 nav{
-    background-color: rgb(255, 255, 255);
-
+  background-color: rgb(255, 255, 255);
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 1;
 }
 
 nav a {
@@ -51,8 +55,8 @@ label[for=id_content] {
 }
 
 #logo {
-  width: 23%;
-  height: auto;
+  height: 64px;
+  width: auto;
   margin-left: 2vmin;
 }
 
@@ -76,7 +80,6 @@ label[for=id_content] {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-content: center;
-  /* column-gap: 20px; */
 }
 
 .gamecard {
@@ -162,4 +165,9 @@ label[for=id_content] {
 
 input[id=id_name]:focus, input[id=id_cards_used]:focus, input[id=id_region]:focus, select[id=id_num_players]:focus  {
   border-color: blue!important;
+}
+
+.brand-logo {
+  height: 60px;
+  width: auto;
 }
