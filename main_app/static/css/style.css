@@ -46,10 +46,9 @@ label[for=id_content] {
   margin-left: 2vmin;
 }
 
-#details-title {
-  font-size: 8vmin;
-  color: white;
-  text-shadow: rgb(0, 0, 0) 0px 0px 20px;
+.details-section{
+  line-height: 200%;
+  display: inline;
 }
 
 .linktext {
@@ -84,3 +83,26 @@ label[for=id_content] {
   margin-left: 7vmin;
   margin-right: 7vmin;
 }
+
+.rules {
+  height: 40vmin;
+  overflow: scroll;
+  border: 1px solid black;
+}
+
+.badge-title {
+  display: inline;
+}
+
+.remove-icon {
+  content-visibility: hidden;
+}
+
+.remove-icon:hover{ 
+  background-image: none!important;
+  background-color: grey!important;
+  content-visibility: visible!important;
+  color: white!important;
+}
+
+
