@@ -7,6 +7,7 @@ body {
   background-position: center;
 }
 
+
 main {
   flex: 1 0 auto;
   margin-top: 10vmin!important;
@@ -19,11 +20,11 @@ footer.page-footer {
   color: blue;
 }
 
-nav{
+nav {
   background-color: rgb(255, 255, 255);
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  position: fixed;
+  top: 0;
+  width: 100%; 
   z-index: 1;
 }
 
@@ -73,14 +74,9 @@ label[for=id_content] {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 
-.wrapper-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  justify-content: center;
-}
 
 .gamecard {
   background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-vintage-minimalistic-playing-card-background-image_88093.jpg');
@@ -106,7 +102,6 @@ label[for=id_content] {
 
 .badge-title {
   width: 40px;
-  /* float: right; */
   font-size: 14px;
   margin: 0 1px;
 }
@@ -160,14 +155,42 @@ label[for=id_content] {
 
 .form-title {
   padding-top: 5vmin;
-
+  
 }
 
-input[id=id_name]:focus, input[id=id_cards_used]:focus, input[id=id_region]:focus, select[id=id_num_players]:focus  {
+input[id=id_name]:focus, input[id=id_cards_used]:focus, 
+input[id=id_region]:focus, input[id=id_username]:focus, 
+input[id=id_password]:focus, input[id=id_password1]:focus,
+input[id=id_password2]:focus, select[id=id_num_players]:focus {
   border-color: blue!important;
 }
 
 .brand-logo {
   height: 60px;
   width: auto;
+}
+
+.login-title {
+  padding-top: 1vmin!important;
+  padding-bottom: 0!important;
+  margin-top: 2vmin!important;
+}
+
+/* .index-temp {
+  width: 378px;
+  
+} */
+
+.wrapper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  justify-content: center;
+}
+
+@media only screen and (max-width: 993px) {
+  .wrapper-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

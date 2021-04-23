@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
-<h1>Sign Up</h1>
-
-{% if error_message %}<p class="blue-text">{{ error_message }}</p>{% endif %}
-
 <div class="card">
+    <div class="card-content login-title">
+        <div class="card-title">
+            <h3 class="login-title">Sign Up</h3>
+        </div>
+    </div>
     <div class="card-content">
+        {% if error_message %}
+            <p class="linktext">{{ error_message }}</p>
+        {% endif %}
         <form method="post" action="{% url 'signup' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" class="btn" value="Sign Up">
+            <div class="card-action">
+                <input type="submit" class="btn" value="Sign Up">
+            </div>
           </form>
     </div>
 </div>
-
 
 {% endblock %}

@@ -3,14 +3,13 @@
 {% block content %}
 
 <h1 class="white-text">Games</h1>
-
 <container class="wrapper-grid">
 {% for game in games %}
-<a href="{% url 'details' game.id %}"> 
+<a class="index-temp" href="{% url 'details' game.id %}"> 
       <div class="card gamecard">
         <div class="card-content center-align index-badges">
           {% for badge in game.badges.all %}
-          <img class="badge" src="{{badge.url}}" alt="{{badge.name}}">
+            <img class="badge" src="{{badge.url}}" alt="a badge representing {{badge.name}}">
           {% endfor %}
         </div>
         <div class="linktext card-content">
@@ -22,5 +21,5 @@
   </div>  
 {% endfor %}
 </container>
-{% endblock %}
 
+{% endblock %}
