@@ -101,6 +101,7 @@ label[for=id_content] {
 }
 
 .badge-title {
+  display: inline;
   width: 40px;
   font-size: 14px;
   margin: 0 1px;
