@@ -9,94 +9,98 @@
                 <h3 class="details-title">{{game.name}} Details</h3>
                 <div class="card-content badge-container">
                     {% if game.badges %}
-                        {% for badge in game.badges.all %}
-                        <div class="tooltip">
-                            <div class="tooltiptext">
-                                <p class="badge-title">{{ badge.title }}</p>
-                            </div>
-                            {% if user_id == game.user %}
-                            <form class="badge-title" action="{% url 'unassoc_badge' game.id badge.id %}" method="POST">
-                                {% csrf_token %}
-                                <button style="background: url({{badge.url}});" type="submit" class="btn remove-icon">X</button>
-                            </form>
+                    {% for badge in game.badges.all %}
+                    <div class="tooltip">
+                        <div class="tooltiptext">
+                            <p class="badge-title">{{ badge.title }}</p>
                         </div>
-                            {% endif %}
-                        {% endfor %}
+                        {% if user_id == game.user %}
+                        <form class="badge-title" action="{% url 'unassoc_badge' game.id badge.id %}" method="POST">
+                            {% csrf_token %}
+                            <button style="background: url({{badge.url}});" type="submit"
+                                class="btn remove-icon">X</button>
+                        </form>
+                        {% else %}
+                        <img class="badge-title" src="{{ badge.url }}" alt="a badge representing {{ badge.title }}">
+                    </div>
+                        {% endif %}
+                    {% endfor %}
                     {% endif %}
                 </div>
             </div>
-        <div class="details-section">
-            <h6><strong>Number of Players:</strong> {{game.num_players}}</h6>
-            <h6><strong>Cards Used:</strong> {{game.cards_used}}</h6>
-            <h6><strong>Region:</strong> {{game.region}}</h6>
-            <h6><strong>Created On:</strong> {{game.created}}</h6>
-            <h6><strong>Rules:</strong></h6>
-        </div>
-        <p class="rules">{{game.rules}}</p>
-    </div>
-    {% if user_id == game.user %}
-    <div class="card-action">
-        <a class="btn" href="{% url 'games_update' game.id %}">Edit</a>
-        <a class="btn" href="{% url 'games_delete' game.id %}">Delete</a>
-    </div>
-    {% endif %}
-    <div class="card-content">
-        <form action="{% url 'comments_create' game.id %}" method="POST">
-            {% csrf_token %}
-            {{ comment_form.as_p }}
-            <div class="card-action">
-            <input type="submit" class="btn" value="Share Your Thoughts!">
+            <div class="details-section">
+                <h6><strong>Number of Players:</strong> {{game.num_players}}</h6>
+                <h6><strong>Cards Used:</strong> {{game.cards_used}}</h6>
+                <h6><strong>Region:</strong> {{game.region}}</h6>
+                <h6><strong>Created On:</strong> {{game.created}}</h6>
+                <h6><strong>Rules:</strong></h6>
             </div>
-        </form>
-    </div>
-    <div class="card-content">
-        {% if game.comment_set.all %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Comments:</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for comment in game.comment_set.all %}
-                    <tr>
-                        <td>{{ comment.content }}</td>
-                        <td>{{ comment.created }}</td>
-                        <td>{% if user_id == comment.user %}
-                        <a class="btn" href="{% url 'comments_delete' game.id comment.id %}">Delete</a>
-                        {% endif %}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <h5>Say Something!</h5>
+            <p class="rules">{{game.rules}}</p>
+        </div>
+        {% if user_id == game.user %}
+            <div class="card-action">
+                <a class="btn" href="{% url 'games_update' game.id %}">Edit</a>
+                <a class="btn" href="{% url 'games_delete' game.id %}">Delete</a>
+            </div>
         {% endif %}
-    </div>
-</div>
-<div class="card">
-    {% if user_id == game.user %}
-    <div class="card-content">
-        <h5>Add a Badge!</h5>
-        <div class="card-action">
-            <form action="{% url 'assoc_badge' game.id %}" method="POST">
+        <div class="card-content">
+            <form action="{% url 'comments_create' game.id %}" method="POST">
                 {% csrf_token %}
-                <select name="badge" class="select">
-                    {% for badge in badges %}
-                        <option value="{{ badge.id }}">{{ badge.title }}</option>
-                {% endfor %}
-                </select>
+                {{ comment_form.as_p }}
                 <div class="card-action">
-                    <button type="submit" class="btn">Add</button>
+                    <input type="submit" class="btn" value="Share Your Thoughts!">
                 </div>
             </form>
         </div>
-        {% endif %} 
+        <div class="card-content">
+            {% if game.comment_set.all %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Comments:</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comment in game.comment_set.all %}
+                            <tr>
+                                <td>{{ comment.content }}</td>
+                                <td>{{ comment.created }}</td>
+                                <td>
+                                    {% if user_id == comment.user %}
+                                        <a class="btn" href="{% url 'comments_delete' game.id comment.id %}">Delete</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h5>Say Something!</h5>
+            {% endif %}
+        </div>
     </div>
+    <div class="card">
+        {% if user_id == game.user %}
+            <div class="card-content">
+                <h5>Add a Badge!</h5>
+                <div class="card-action">
+                    <form action="{% url 'assoc_badge' game.id %}" method="POST">
+                        {% csrf_token %}
+                        <select name="badge" class="select">
+                            {% for badge in badges %}
+                                <option value="{{ badge.id }}">{{ badge.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="card-action">
+                            <button type="submit" class="btn">Add</button>
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
-</div>
-</div>
 {% endblock %}
-
