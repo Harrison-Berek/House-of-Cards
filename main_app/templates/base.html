@@ -15,7 +15,11 @@
   <nav>
       <div class="nav-wrapper">
         <ul>
-          <li><a href="/" class="left brand-logo"><img id="logo" src="https://cdn2.iconfinder.com/data/icons/sports-and-games-24/68/Poker-256.png" alt="home"></a></li>
+          {% if user.is_authenticated %}
+          <li><a href="/games" class="left brand-logo"><img id="logo" src="https://cdn2.iconfinder.com/data/icons/sports-and-games-24/68/Poker-256.png" alt="a log of a stack of cards"></a></li>
+          {% else %}
+          <li><a href="/" class="left brand-logo"><img id="logo" src="https://cdn2.iconfinder.com/data/icons/sports-and-games-24/68/Poker-256.png" alt="a log of a stack of cards"></a></li>
+          {% endif %}
         </ul>
         <!-- NAV LINKKS -->
         <a href="#" data-target="mobile-links" class="sidenav-trigger right"><i class="material-icons">menu</i></a>

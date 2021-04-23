@@ -12,15 +12,15 @@
 ### Screenshots:
 &nbsp;  
 >##### Upon loading
-> ![](https://i.imgur.com/oMymh1Q.jpg)
+> ![](https://i.imgur.com/I1GLSr1.jpg)
 >##### Home Screen
-> ![](https://i.imgur.com/lew9ewy.png)
->##### Wine Details
-> ![](https://i.imgur.com/Ckfsqen.png)
->##### A Guide to all Locations
-> ![](https://i.imgur.com/GRp4Qzl.png)
->##### Location Details
-> ![](https://i.imgur.com/AscF8E0.png)
+> ![](https://i.imgur.com/s0yOvJD.png)
+>##### Add a Game
+> ![](https://i.imgur.com/dDSCW3I.png)
+>##### Game Details
+> ![](https://i.imgur.com/UF5RMGC.png)
+>##### Add Comments and Badges
+> ![](https://i.imgur.com/GGUUoLR.png)
 &nbsp; 
 
 &nbsp; 

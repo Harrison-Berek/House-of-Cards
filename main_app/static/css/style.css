@@ -176,18 +176,19 @@ input[id=id_password2]:focus, select[id=id_num_players]:focus {
   margin-top: 2vmin!important;
 }
 
-/* .index-temp {
+.index-temp {
   width: 378px;
   
-} */
+}
 
 .wrapper-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   justify-content: center;
+  align-items: center;
 }
 
-@media only screen and (max-width: 993px) {
+@media only screen and (max-width: 1157px) {
   .wrapper-grid {
     display: flex;
     flex-direction: column;

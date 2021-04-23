@@ -5,7 +5,7 @@
 <h1 class="white-text">Games</h1>
 <container class="wrapper-grid">
 {% for game in games %}
-<a class="index-temp" href="{% url 'details' game.id %}"> 
+  <a class="index-temp" href="{% url 'details' game.id %}"> 
       <div class="card gamecard">
         <div class="card-content center-align index-badges">
           {% for badge in game.badges.all %}
@@ -17,8 +17,8 @@
           <h4 class="center-align index-title">Players: {{game.num_players}}</h4>
         </div>
       </div>
-    </a>  
-  </div>  
+    </div>  
+  </a>  
 {% endfor %}
 </container>
 

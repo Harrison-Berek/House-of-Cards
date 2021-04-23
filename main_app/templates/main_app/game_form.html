@@ -4,7 +4,11 @@
 
 <div class="card">
     <div class="card-title">
+        {% if object %}
+        <h3 class="form-title center-align">Edit {{object.name}}</h3>
+        {% else %}
         <h3 class="form-title center-align">Add a Game</h3>
+        {% endif %}
     </div>
     <div class="card-content">
         <form action="" method="post">
