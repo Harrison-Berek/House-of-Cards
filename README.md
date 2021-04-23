@@ -26,7 +26,7 @@
 &nbsp; 
 
 ### Technologies Used
-Django, DTL, CSS, Materialize, Python, and PostgresQL.
+Django, DTL, CSS, Materialize, Python, and PostgresQL, JQuery
 
 ### Getting Started
 Below is a link that will direct you to the web app. 
